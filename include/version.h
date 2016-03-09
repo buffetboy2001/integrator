@@ -32,21 +32,29 @@
 #pragma once
 #endif
 
+#include 
+#include
+
 //#define INTEGRATOR_MAKE_VERSION(major, minor, point) \
-//    (major * 1000 * 1000u + minor * 1000u + point)
+// (major * 1000 * 1000u + minor * 1000u + point)
 
+// if suffix is empty, this will end with a hyphen. That will be removed at run-time
 #define INTEGRATOR_MAKE_VERSION_STR(major, minor, point, suffix) \
-    #major "." #minor "." #point "-" #suffix
-
-//! This is integrator version number as unsigned integer.  This must
-//! be kept on a single line. It is used by Autotool and CMake build
-//! systems to parse version number.
-// #define INTEGRATOR_VERSION INTEGRATOR_MAKE_VERSION(1, 2, 0)
+#major "." #minor "." #point "-" #suffix
 
 //! This is integrator version number as a string.
-//! Do not wrap the suffix in quotes
+//! Do not wrap the suffix in quotes, but it may be left empty for a release
 #define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 3, 0, SNAPSHOT)
 
-
+namespace integrator {
+    static std::string getVersion() {
+        std::string verStr(INTEGRATOR_VERSION_STR);
+        bool stripLastChar = verStr.find("-") == verStr.length()-1;
+        if (stripLastChar) {
+            // dump the last char
+            verStr.resize(verStr.find("-"));
+        }
+        return verStr;
+    }
+}
 #endif
-
