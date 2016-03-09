@@ -6,9 +6,17 @@ enable_language(CXX)
 # set versions
 include (VersionUtils.cmake)
 integrator_get_version ("${PROJECT_SOURCE_DIR}/include"
-        integrator_version_major integrator_version_minor integrator_version_patch)
-message("-- Generating build for Integrator version ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch}")
-set(VERSION ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch}-SNAPSHOT)
+        integrator_version_major integrator_version_minor integrator_version_patch integrator_version_suffix)
+# message(${integrator_version_suffix})
+string(LENGTH ${integrator_version_suffix} integrator_version_suffix_length)
+if(integrator_version_suffix_length EQUAL 1)
+	# ignore this suffix
+	set(VERSION ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch})
+else()
+	# use the suffix
+	set(VERSION ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch}-${integrator_version_suffix})
+endif()
+message("-- Generating build for Integrator version ${VERSION}")
 
 # bring log4cplus includes onto our path
 include_directories(/usr/local/include/log4cplus/)
