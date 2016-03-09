@@ -45,7 +45,7 @@
 
 //! This is integrator version number as a string.
 //! Do not wrap the suffix in quotes
-#define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 2, 0, SNAPSHOT)
+#define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 2, 0, )
 
 
 #endif
