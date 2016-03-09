@@ -3,10 +3,10 @@
 //
 
 #include "../include/integrator.h"
-#include <logger.h>
-#include <consoleappender.h>
-#include <loglevel.h>
-#include <loggingmacros.h>
+// #include <logger.h>
+// #include <consoleappender.h>
+// #include <loglevel.h>
+// #include <loggingmacros.h>
 
 using namespace integrator;
 
