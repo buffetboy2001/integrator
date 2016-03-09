@@ -28,8 +28,6 @@
 #if ! defined (INTEGRATOR_VERSION_H)
 #define INTEGRATOR_VERSION_H
 
-// #include <config.hxx>
-
 #if defined (INTEGRATOR_HAVE_PRAGMA_ONCE)
 #pragma once
 #endif
@@ -37,8 +35,8 @@
 //#define INTEGRATOR_MAKE_VERSION(major, minor, point) \
 //    (major * 1000 * 1000u + minor * 1000u + point)
 
-#define INTEGRATOR_MAKE_VERSION_STR(major, minor, point) \
-    #major "." #minor "." #point
+#define INTEGRATOR_MAKE_VERSION_STR(major, minor, point, suffix) \
+    #major "." #minor "." #point "-" #suffix
 
 //! This is integrator version number as unsigned integer.  This must
 //! be kept on a single line. It is used by Autotool and CMake build
@@ -46,17 +44,9 @@
 // #define INTEGRATOR_VERSION INTEGRATOR_MAKE_VERSION(1, 2, 0)
 
 //! This is integrator version number as a string.
-// FIXME add suffix to string 
-#define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 2, 0)
+//! Do not wrap the suffix in quotes
+#define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 2, 0, SNAPSHOT)
 
-
-//namespace integrator
-//{
-//
-//    extern INTEGRATOR_EXPORT unsigned const version;
-//    extern INTEGRATOR_EXPORT char const versionStr[];
-//
-//}
 
 #endif
 
