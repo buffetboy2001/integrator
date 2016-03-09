@@ -32,11 +32,8 @@
 #pragma once
 #endif
 
-#include 
-#include
-
-//#define INTEGRATOR_MAKE_VERSION(major, minor, point) \
-// (major * 1000 * 1000u + minor * 1000u + point)
+#include <iostream>
+#include <string>
 
 // if suffix is empty, this will end with a hyphen. That will be removed at run-time
 #define INTEGRATOR_MAKE_VERSION_STR(major, minor, point, suffix) \
