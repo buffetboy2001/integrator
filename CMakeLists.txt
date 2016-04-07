@@ -30,14 +30,22 @@ link_directories(/usr/local/bin)
 add_library(integrator-${VERSION} SHARED src/version.cpp src/integrator.cpp)
 target_link_libraries(integrator-${VERSION}) #  cyglog4cplus-1-2-5.dll
 
-# Installing to a separate directory
-install(TARGETS integrator-${VERSION} DESTINATION bin)
-install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME}
-        FILES_MATCHING PATTERN "*.h")
+# Installing to a separate (absolute) directory
+set(LIB_DIR ~/lib_dir/)
+set(SOME_LOCATION ~/some_location//${PROJECT_NAME}/${VERSION})
+install(TARGETS integrator-${VERSION} 
+		DESTINATION bin 
+	   	EXPORT export_integrator-${VERSION} 
+   		ARCHIVE DESTINATION ${LIB_DIR} 
+   	)
+install(DIRECTORY include/ 
+		DESTINATION include/${PROJECT_NAME}
+        FILES_MATCHING PATTERN "*.h"
+		)
+# build and install to auto-generated cmake files
+install(EXPORT export_integrator-${VERSION} 
+		DESTINATION ${SOME_LOCATION})
 
 
 # Thoughts & notes:
 #
-# I should also play with the EXPORT option of the install command. https://cmake.org/cmake/help/v3.0/command/install.html?highlight=install#command:install
-#
-# I should setup versioning here so that the install stuff takes the version into account like log4cplus does.
