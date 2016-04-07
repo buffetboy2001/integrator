@@ -41,7 +41,7 @@
 
 //! This is integrator version number as a string.
 //! Do not wrap the suffix in quotes, but it may be left empty for a release
-#define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 3, 0, SNAPSHOT)
+#define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 4, 0, SNAPSHOT)
 
 namespace integrator {
     static std::string getVersion() {
